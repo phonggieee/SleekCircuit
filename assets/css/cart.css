@@ -1,0 +1,147 @@
+.cart-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cart-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-details h2 {
+  margin: 10px;
+}
+
+.cart-item-details p {
+  margin: 10px;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-item-quantity button {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background: #121212;
+  cursor: pointer;
+  color: white;
+  border-radius: 40px;
+}
+
+.cart-item-quantity span {
+  min-width: 30px;
+  text-align: center;
+}
+
+.cart-item-remove {
+  background: #a00000;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 40px;
+}
+
+#cart-total {
+  text-align: right;
+  font-size: 1.5em;
+  margin: 20px 0;
+}
+
+#checkout-btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background: #121212;
+  color: white;
+  border: none;
+  border-radius: 40px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+#checkout-btn:hover {
+  background: #242424;
+}
+
+.user-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.user-dropdown-content {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  min-width: 180px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  z-index: 150;
+}
+
+.user-dropdown-content a,
+.user-dropdown-content button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  color: #e5e5e5;
+  text-decoration: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.user-dropdown-content a:hover,
+.user-dropdown-content button:hover {
+  background: #333;
+}
+
+.user-dropdown:hover .user-dropdown-content,
+.user-dropdown:focus-within .user-dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}

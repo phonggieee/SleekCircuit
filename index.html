@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="../assets/css/index.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <a class="logo" href="index.html">
+        <img
+          src="../assets/images/SleekCircuit_white_transparent.png"
+          id="logo"
+        />
+      </a>
+      <nav class="nav">
+        <div class="dropdown">
+          <a href="#">Shop</a>
+          <div class="dropdown-content">
+            <a href="#">Phones</a>
+            <a href="#">Tablets</a>
+            <a href="#">More</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="#">Lorem</a>
+          <div class="dropdown-content">
+            <a href="#">ipsum</a>
+            <a href="#">dolor sit</a>
+            <a href="#">amet</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." id="search-input" />
+        <button class="search-btn" id="search-btn">Search</button>
+      </div>
+
+      <div class="auth-buttons">
+        <a href="cart.html" class="btn-cart">Cart</a>
+        <div class="user-widget user-dropdown" id="user-widget" hidden>
+          <span class="avatar" id="user-avatar"></span>
+          <span class="username" id="user-name"></span>
+          <div class="user-dropdown-content">
+            <a href="account-details.html">Account details</a>
+            <button type="button" id="logout-button">Logout</button>
+          </div>
+        </div>
+        <a href="../pages/login.html" class="btn-login">Login</a>
+        <a href="../pages/register.html" class="btn-register">Register</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="iPhone">
+        <h1>iPhone</h1>
+        <h3>Meet the iPhone 17 family.</h3>
+        <div class="iPhone-buttons">
+          <button class="primary">Shop iPhone</button>
+          <button class="secondary">Learn more</button>
+        </div>
+        <div class="AppleIntel">Built for Apple Intelligence.</div>
+      </div>
+
+      <div class="iPhone">
+        <img src="../assets/images/iPhone17cut.png" />
+      </div>
+    </section>
+
+    <div class="iPhone-lineup-text">Explore the iPhone lineup.</div>
+    <div class="choose-best">Choose what's best for you.</div>
+
+    <section class="product-container" id="product-container"></section>
+
+    <footer>
+      <p>© 2025 - 2026 SleekCircuit</p>
+    </footer>
+    <script type="module" src="../assets/js/firebase_config.js"></script>
+    <script type="module" src="../assets/js/auth.js"></script>
+    <script type="module" src="../assets/js/user_header.js"></script>
+    <script type="module" src="../assets/js/products.js"></script>
+    <script type="module">
+      import { addToCart } from "../assets/js/cart.js";
+      import { renderProducts } from "../assets/js/products.js";
+      window.addToCart = addToCart;
+      renderProducts("product-list");
+    </script>
+    <script type="module">
+      import {
+        renderProductData,
+        searchFromUrl,
+      } from "../assets/js/products.js";
+      renderProductData("product-container").then(() => searchFromUrl());
+    </script>
+  </body>
+</html>

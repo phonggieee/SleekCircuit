@@ -1,0 +1,203 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #e5e5e5;
+  font-family: "Plus Jakarta Text", sans-serif;
+}
+
+.container {
+  background: #000000;
+  padding: 30px;
+  border: 1px solid #333333;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 1.5);
+  width: 350px;
+}
+
+#logo {
+  height: 2rem;
+  align-items: center;
+}
+
+.container-header {
+  display: flex;
+  justify-content: space-between; /* logo on left, button on right */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-widget {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+.user-widget[hidden] {
+  display: none;
+}
+
+.user-widget .avatar {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #e5e5e5;
+  color: #121212;
+  font-weight: 700;
+}
+
+.user-widget .username {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.back-home {
+  padding: 0.5rem 1rem;
+  background: #222;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 13px;
+  transition: background 0.3s ease;
+}
+
+.back-home:hover {
+  background: #444;
+  text-decoration: none;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #e5e5e5;
+}
+
+input {
+  font-family: "Plus Jakarta Text", sans-serif;
+  width: 94%;
+  align-items: center;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #cccccc;
+}
+
+button {
+  font-family: "Plus Jakarta Text", sans-serif;
+  width: 100%;
+  padding: 10px;
+  background: #ffffff;
+  border: none;
+  border-radius: 8px;
+  color: #000000;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e5e5e5;
+  color: #000000;
+}
+
+p {
+  text-align: center;
+  color: #e5e5e5;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+a {
+  color: #66a6ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container form .asterisk {
+  color: red;
+  margin-left: 0;
+}
+
+.container form .text {
+  color: #ffffff;
+  margin-right: 0;
+}
+
+.container form .text,
+.asterisk {
+  display: inline-block;
+}
+
+/* Inline styles moved from HTML */
+.error-text {
+  color: red;
+  font-size: 10px;
+}
+
+input.invalid {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.06);
+}
+
+.user-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.user-dropdown-content {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  min-width: 180px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  z-index: 150;
+}
+
+.user-dropdown-content a,
+.user-dropdown-content button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  color: #e5e5e5;
+  text-decoration: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.user-dropdown-content a:hover,
+.user-dropdown-content button:hover {
+  background: #333;
+}
+
+.user-dropdown:hover .user-dropdown-content,
+.user-dropdown:focus-within .user-dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}

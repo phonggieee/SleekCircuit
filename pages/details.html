@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product - SleekCircuit</title>
+    <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="stylesheet" href="../assets/css/details.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <a class="logo" href="index.html">
+        <img
+          src="../assets/images/SleekCircuit_white_transparent.png"
+          id="logo"
+        />
+      </a>
+      <nav class="nav">
+        <div class="dropdown">
+          <a href="#">Shop</a>
+          <div class="dropdown-content">
+            <a href="#">Phones</a>
+            <a href="#">Tablets</a>
+            <a href="#">/More</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="#">Lorem</a>
+          <div class="dropdown-content">
+            <a href="#">ipsum</a>
+            <a href="#">dolor sit</a>
+            <a href="#">amet</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." id="search-input" />
+        <button class="search-btn" id="search-btn">Search</button>
+      </div>
+
+      <div class="auth-buttons">
+        <a href="cart.html" class="btn-cart">Cart</a>
+        <div class="user-widget user-dropdown" id="user-widget" hidden>
+          <span class="avatar" id="user-avatar"></span>
+          <span class="username" id="user-name"></span>
+          <div class="user-dropdown-content">
+            <a href="account-details.html">Account details</a>
+            <button type="button" id="logout-button">Logout</button>
+          </div>
+        </div>
+        <a href="../pages/login.html" class="btn-login">Login</a>
+        <a href="../pages/register.html" class="btn-register">Register</a>
+      </div>
+    </header>
+
+    <div id="debug-info" aria-live="polite"></div>
+
+    <section class="product-hero" id="product-hero">
+      <div class="product-image" id="product-image">
+        <!-- Image will be injected by JS; fallback placeholder -->
+        <img
+          src="../assets/images/placeholder.png"
+          alt="Product Image"
+          class="placeholder"
+        />
+      </div>
+      <div class="product-info" id="product-info">
+        <h1 id="product-name">Product Name</h1>
+        <div class="tagline" id="product-tagline">
+          Short description or tagline
+        </div>
+        <div class="price" id="product-price">$0.00</div>
+        <div class="buttons">
+          <a href="#" class="primary" id="buy-button">Buy now</a>
+          <a href="#" class="secondary" id="cart-button">Add to cart</a>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="other-products-section"
+      aria-labelledby="other-products-heading"
+    >
+      <h2 id="other-products-heading">Other Products</h2>
+      <section class="product-container" id="other-products"></section>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 SleekCircuit</p>
+    </footer>
+
+    <script type="module" src="../assets/js/firebase_config.js"></script>
+    <script type="module" src="../assets/js/auth.js"></script>
+    <script type="module" src="../assets/js/user_header.js"></script>
+    <script type="module" src="../assets/js/products.js"></script>
+    <script type="module">
+      import { renderDetails } from "../assets/js/products.js";
+      renderDetails("product-hero");
+    </script>
+  </body>
+</html>
