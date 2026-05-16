@@ -59,17 +59,12 @@ function isIndexPage() {
 }
 
 async function runSearchQuery(searchText) {
-  const db = getFirestore(app);
-  const q = query(
-    collection(db, collectionName),
-    where("name", ">=", searchText),
-    where("name", "<=", searchText + "\uf8ff"),
-  );
-  const querySnapshot = await getDocs(q);
+  const normalizedSearch = searchText.toLowerCase();
+  const data = await fetchData();
 
-  let results = [];
-  querySnapshot.forEach((doc) => {
-    results.push({ id: doc.id, ...doc.data() });
+  const results = data.filter((p) => {
+    const name = (p.name || "").toString().toLowerCase();
+    return name.includes(normalizedSearch);
   });
 
   renderSearchedResults(results);
@@ -110,10 +105,20 @@ export async function renderSearchedResults(products) {
 async function searchProducts() {
   if (!searchInput) return;
   let searchText = searchInput.value.trim();
-  if (searchText === "") return;
 
   if (!isIndexPage()) {
-    window.location.href = `index.html?search=${encodeURIComponent(searchText)}`;
+    const targetUrl = searchText
+      ? `index.html?search=${encodeURIComponent(searchText)}`
+      : "index.html";
+    window.location.href = targetUrl;
+    return;
+  }
+
+  if (searchText === "") {
+    await renderProductData("product-container");
+    const newUrl = new URL(window.location.href);
+    newUrl.searchParams.delete("search");
+    window.history.replaceState({}, "", newUrl.toString());
     return;
   }
 
