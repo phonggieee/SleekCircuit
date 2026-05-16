@@ -25,29 +25,8 @@ export async function fetchData() {
 
 export async function renderProductData(id) {
   let productContainer = document.getElementById(id);
-  let productHTML = "";
-  let data = await fetchData();
-
-  data.forEach((p) => {
-    const pid = p.id ?? p.pk ?? p.name;
-    const encodedPid = encodeURIComponent(pid);
-    productHTML += `<a class="product-card" href="../pages/details.html?id=${encodedPid}" data-product-id="${encodedPid}">
-                <img src="../assets/images/${p.image}" alt="${p.name}">
-                <h2>${p.name}</h2>
-                <p>${p.desc}</p>
-                <span>Starting from $${p.price} (or $${(p.price / 12).toFixed(2)}/mo)</span>
-                <button class="more">More</button>
-            </a>`;
-  });
-
-  productContainer.innerHTML = productHTML;
-
-  productContainer.querySelectorAll(".product-card").forEach((a) => {
-    a.addEventListener("click", () => {
-      const pid = a.getAttribute("data-product-id");
-      if (pid) sessionStorage.setItem("selectedProductId", pid);
-    });
-  });
+  const data = await fetchData();
+  renderProductCards(productContainer, data);
 }
 
 const searchInput = document.getElementById("search-input");
@@ -73,12 +52,18 @@ async function runSearchQuery(searchText) {
 export async function renderSearchedResults(products) {
   let productContainer = document.getElementById("product-container");
   if (!productContainer) return;
-  let productHTML = "";
 
   if (products.length === 0) {
     productContainer.innerHTML = "Product not found.";
     return;
   }
+
+  renderProductCards(productContainer, products);
+}
+
+function renderProductCards(productContainer, products) {
+  if (!productContainer) return;
+  let productHTML = "";
 
   products.forEach((p) => {
     const pid = p.id ?? p.pk ?? p.name;
@@ -100,6 +85,24 @@ export async function renderSearchedResults(products) {
       if (pid) sessionStorage.setItem("selectedProductId", pid);
     });
   });
+}
+
+async function renderOtherProducts(currentProductId) {
+  const otherProductsContainer = document.getElementById("other-products");
+  if (!otherProductsContainer) return;
+
+  const data = await fetchData();
+  const otherProducts = data.filter((p) => {
+    const pid = p.id ?? p.pk ?? p.name;
+    return pid !== currentProductId;
+  });
+
+  if (otherProducts.length === 0) {
+    otherProductsContainer.innerHTML = "No other products available.";
+    return;
+  }
+
+  renderProductCards(otherProductsContainer, otherProducts);
 }
 
 async function searchProducts() {
@@ -188,4 +191,6 @@ export async function renderDetails(containerId) {
       module.addToCart(product.id);
     });
   });
+
+  await renderOtherProducts(productId);
 }
