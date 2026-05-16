@@ -108,6 +108,58 @@ button:hover {
   color: #000000;
 }
 
+.or-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0 12px;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.or-separator::before,
+.or-separator::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  max-width: 75px;
+  background: #444;
+}
+
+.oauth {
+  margin-bottom: 16px;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.google-btn:hover {
+  background: #f7f7f7;
+}
+
+.google-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
 p {
   text-align: center;
   color: #e5e5e5;

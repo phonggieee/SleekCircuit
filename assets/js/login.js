@@ -13,6 +13,15 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 loginButton.addEventListener("click", handleLogin);
 
+const googleBtn = document.getElementById("google-signin-btn");
+if (googleBtn) {
+  googleBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    alert("This feature is in development.");
+  });
+}
+
 function handleLogin(event) {
   event.preventDefault();
   let email = emailElement.value.trim();
